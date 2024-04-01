@@ -122,6 +122,14 @@ type Update struct {
 	//
 	// optional
 	ChatJoinRequest *ChatJoinRequest `json:"chat_join_request,omitempty"`
+	// ChatBoostUpdated represents a boost added to a chat or changed.
+	//
+	// optional
+	ChatBoost *ChatBoostUpdated `json:"chat_boost,omitempty"`
+	// ChatBoostRemoved represents a boost removed from a chat.
+	//
+	// optional
+	ChatBoostRemoved *ChatBoostRemoved `json:"removed_chat_boost,omitempty"`
 }
 
 // SentFrom returns the user who sent an update. Can be nil, if Telegram did not provide information
@@ -1157,10 +1165,12 @@ type MessageOrigin struct {
 	// SenderUserName "hidden_user" only.
 	// Name of the user that sent the message originally
 	SenderUserName string `json:"sender_user_name,omitempty"`
-	// SenderChat "chat" and "channel".
-	// For "chat": Chat that sent the message originally
-	// For "channel": Channel chat to which the message was originally sent
+	// SenderChat "chat" only.
+	// Chat that sent the message originally
 	SenderChat *Chat `json:"sender_chat,omitempty"`
+	// Chat "channel" only.
+	// Channel chat to which the message was originally sent
+	Chat *Chat `json:"chat,omitempty"`
 	// AuthorSignature "chat" and "channel".
 	// For "chat": For messages originally sent by an anonymous chat administrator,
 	// original message author signature.
@@ -2431,32 +2441,32 @@ type ChatMember struct {
 	// True, if the user is allowed to send audios
 	//
 	// optional
-	CanSendAudios bool
+	CanSendAudios bool `json:"can_send_audios,omitempty"`
 	// CanSendDocuments restricted only.
 	// True, if the user is allowed to send documents
 	//
 	// optional
-	CanSendDocuments bool
+	CanSendDocuments bool `json:"can_send_documents,omitempty"`
 	// CanSendPhotos is restricted only.
 	// True, if the user is allowed to send photos
 	//
 	// optional
-	CanSendPhotos bool
+	CanSendPhotos bool `json:"can_send_photos,omitempty"`
 	// CanSendVideos restricted only.
 	// True, if the user is allowed to send videos
 	//
 	// optional
-	CanSendVideos bool
+	CanSendVideos bool `json:"can_send_videos,omitempty"`
 	// CanSendVideoNotes restricted only.
 	// True, if the user is allowed to send video notes
 	//
 	// optional
-	CanSendVideoNotes bool
+	CanSendVideoNotes bool `json:"can_send_video_notes,omitempty"`
 	// CanSendVoiceNotes restricted only.
 	// True, if the user is allowed to send voice notes
 	//
 	// optional
-	CanSendVoiceNotes bool
+	CanSendVoiceNotes bool `json:"can_send_voice_notes,omitempty"`
 	// CanSendPolls restricted only.
 	// True, if the user is allowed to send polls
 	//
@@ -2563,27 +2573,27 @@ type ChatPermissions struct {
 	// CanSendAudios is true, if the user is allowed to send audios
 	//
 	// optional
-	CanSendAudios bool
+	CanSendAudios bool `json:"can_send_audios,omitempty"`
 	// CanSendDocuments is true, if the user is allowed to send documents
 	//
 	// optional
-	CanSendDocuments bool
+	CanSendDocuments bool `json:"can_send_documents,omitempty"`
 	// CanSendPhotos is true, if the user is allowed to send photos
 	//
 	// optional
-	CanSendPhotos bool
+	CanSendPhotos bool `json:"can_send_photos,omitempty"`
 	// CanSendVideos is true, if the user is allowed to send videos
 	//
 	// optional
-	CanSendVideos bool
+	CanSendVideos bool `json:"can_send_videos,omitempty"`
 	// CanSendVideoNotes is true, if the user is allowed to send video notes
 	//
 	// optional
-	CanSendVideoNotes bool
+	CanSendVideoNotes bool `json:"can_send_video_notes,omitempty"`
 	// CanSendVoiceNotes is true, if the user is allowed to send voice notes
 	//
 	// optional
-	CanSendVoiceNotes bool
+	CanSendVoiceNotes bool `json:"can_send_voice_notes,omitempty"`
 	// CanSendPolls is true, if the user is allowed to send polls, implies
 	// can_send_messages
 	//
